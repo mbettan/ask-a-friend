@@ -15,12 +15,12 @@
 </p>
 
 <p align="center">
-  <a href="#before--after">Before/After</a> •
-  <a href="#install">Install</a> •
-  <a href="#setup">Setup</a> •
-  <a href="#what-you-get">What You Get</a> •
-  <a href="#telemetry-dashboard">Telemetry Dashboard</a> •
-  <a href="#how-it-works">How It Works</a>
+  <a href="#before--after">before/after</a> •
+  <a href="#install">install</a> •
+  <a href="#setup">setup</a> •
+  <a href="#what-you-get">what you get</a> •
+  <a href="#telemetry-dashboard">telemetry dashboard</a> •
+  <a href="#how-it-works">how it works</a>
 </p>
 
 ---
@@ -30,13 +30,13 @@ An autonomous agent plugin and local CLI that lets your coding agent phone a spe
 > [!NOTE]
 > This skill is built on a fork of the excellent [caveman](https://github.com/JuliusBrussee/caveman.git) project. We reuse its robust multi-agent installation hooks and statusline patterns to deliver broad IDE compatibility.
 
-## Before / After
+## Before / after
 
 <table>
 <tr>
 <td width="50%">
 
-### 🗣️ Direct/Raw Agent Call (Vulnerable & Expensive)
+### 🗣️ Raw agent call (vulnerable and expensive)
 
 > Agent sends raw contexts, absolute paths, and sensitive credentials straight to external LLMs. Runaway recursive loops can generate massive, unexpected API bills:
 > * 🔓 Raw credentials (`sk-...`, `Bearer ...`) sent in plain text
@@ -46,12 +46,12 @@ An autonomous agent plugin and local CLI that lets your coding agent phone a spe
 </td>
 <td width="50%">
 
-### 🔒 Secure Ask-a-Friend Call (Sanitized & Cached)
+### 🔒 Secure ask-a-friend call (sanitized and cached)
 
 > A dedicated security proxy interceptor scrubs payload identifiers pre-transit, bypasses duplicate queries locally, and enforces strict spend bounds:
-> * 🛡️ **PII Scrubbing** out-of-band; secrets replaced with safe placeholders
-> * 🛑 **Cost Breaker** automatically halts runaway recursive loops
-> * ⚡ **SHA-256 Cache** returns duplicate queries instantly (~1ms)
+> * 🛡️ **PII scrubbing** out-of-band; secrets replaced with safe placeholders
+> * 🛑 **cost breaker** automatically halts runaway recursive loops
+> * ⚡ **SHA-256 cache** returns duplicate queries instantly (~1ms)
 
 </td>
 </tr>
@@ -61,10 +61,10 @@ An autonomous agent plugin and local CLI that lets your coding agent phone a spe
 
 ```
 ┌────────────────────────────────────────┐
-│  OUT-OF-BAND PII SCRUBBING  ██████ 100%│
-│  DUPLICATE CACHE LATENCY   ██████ ~1ms│
-│  ROLLING SPEND BREAKERS    ██████ SQLite│
-│  AUTO-ROUTING ENGINE       ██████ auto │
+│  out-of-band PII scrubbing  ██████ 100%│
+│  duplicate cache latency   ██████ ~1ms│
+│  rolling spend breakers    ██████ SQLite│
+│  auto-routing engine       ██████ auto │
 └────────────────────────────────────────┘
 ```
 
@@ -84,23 +84,23 @@ irm https://raw.githubusercontent.com/mbettan/ask-a-friend/main/hooks/install.ps
 
 ## Setup
 
-### 1. Google Cloud Authentication
+### 1. Google Cloud authentication
 Authenticate your local machine to Google Cloud to access your Agent Platform or Vertex AI backend:
 ```bash
 gcloud auth application-default login
 ```
 
-### 2. Configure your GCP Project ID
+### 2. Configure your GCP project ID
 You can configure your project ID using either environment variables or a persistent config file:
 
-#### Option A: Environment Variables (Recommended for CLI / scripts)
+#### Option A: Environment variables (recommended for CLI / scripts)
 Add this to your shell profile (e.g., `~/.zshrc` or `~/.bashrc`):
 ```bash
 export AGENT_PLATFORM_PROJECT_ID="your-gcp-project-id"
 # Optionally: export AGENT_PLATFORM_LOCATION="global"
 ```
 
-#### Option B: Configuration File (Recommended for persistent IDE plugins)
+#### Option B: Configuration file (recommended for persistent IDE plugins)
 Modify your local configuration file at `~/.config/ask-a-friend/config.json` (created automatically during install):
 ```json
 {
@@ -121,17 +121,17 @@ Once installed, your agent can call a friend through conversational triggers or 
 ask_a_friend @friend:claude "perform a security audit on this endpoint"
 ```
 
-## What You Get
+## What you get
 
-| Capability | CLI / Script Command | Description |
+| Capability | CLI / script command | Description |
 |---|---|---|
-| **Specialized Peer Routing** | `ask_a_friend` tool | Automatically routes queries: `code_review` dispatches to `claude-garden`, while test structures run on fast, cost-efficient `gemini-pro`. |
-| **PII Interceptor** | `scripts/pii.py` | Pre-transit client-side regex scrubber that strips API keys, Bearer authorization tokens, email addresses, and absolute system usernames. |
-| **Circuit Breaker** | `scripts/cost.py` | SQLite-backed telemetry tracking rolling session expenses over a sliding 5h window to alert or hard-block recursive loops. |
-| **Prompt Caching** | `scripts/cache.py` | Prompts and contexts are hashed via SHA-256 to resolve repeated iterations locally under 1ms. |
-| **CLI Dashboard** | `python3 scripts/stats.py` | Command-center budget gauges showing exact rolling token spending, model breakdown metrics, and recent transaction history logs. |
+| **Specialized peer routing** | `ask_a_friend` tool | Automatically routes queries: `code_review` dispatches to `claude-garden`, while test structures run on fast, cost-efficient `gemini-pro`. |
+| **PII interceptor** | `scripts/pii.py` | Pre-transit client-side regex scrubber that strips API keys, Bearer authorization tokens, email addresses, and absolute system usernames. |
+| **Circuit breaker** | `scripts/cost.py` | SQLite-backed telemetry tracking rolling session expenses over a sliding 5h window to alert or hard-block recursive loops. |
+| **Prompt caching** | `scripts/cache.py` | Prompts and contexts are hashed via SHA-256 to resolve repeated iterations locally under 1ms. |
+| **CLI dashboard** | `python3 scripts/stats.py` | Command-center budget gauges showing exact rolling token spending, model breakdown metrics, and recent transaction history logs. |
 
-## Telemetry Dashboard
+## Telemetry dashboard
 
 Every request (successes, warnings, and quota errors) is logged to `~/.ask-friend/telemetry.db`. You can launch a beautiful, live-updating glassmorphic telemetry dashboard server by running:
 
@@ -141,33 +141,33 @@ python3 scripts/dashboard.py
 
 *Once launched, navigate to **http://localhost:8080** to inspect live spend metrics, cache hit rates, and transaction details.*
 
-## How It Works
+## How it works
 
 ```mermaid
 sequenceDiagram
     autonumber
-    participant Agent as Coding Agent
-    participant Inbound as PII Scrubber Interceptor
-    participant Cache as Cache/Cost Guard
+    participant Agent as coding agent
+    participant Inbound as PII scrubber interceptor
+    participant Cache as cache/cost guard
     participant Platform as Agent Platform / Vertex AI
     
     Agent->>Inbound: /ask-friend payload (sensitive strings included)
-    Note over Inbound: Client-side regex scrub.<br/>Replaces keys/emails with placeholders.
-    Inbound->>Cache: Safe payload + Out-of-band rehydrate maps
-    Note over Cache: Hashes query. Check SQLite 5h cap.<br/>Bypasses network if cached.
-    Cache->>Platform: Dispatches sanitized query to Claude/Gemini
-    Platform-->>Cache: Returns terse answer
-    Note over Cache: Stores output in local cache & DB
-    Cache-->>Inbound: Terse answer payload
-    Note over Inbound: Injects real identifiers locally<br/>(Rehydration)
-    Inbound-->>Agent: Clean, exact, safe response
+    Note over Inbound: client-side regex scrub.<br/>replaces keys/emails with placeholders.
+    Inbound->>Cache: safe payload + out-of-band rehydrate maps
+    Note over Cache: hashes query. checks SQLite 5h cap.<br/>bypasses network if cached.
+    Cache->>Platform: dispatches sanitized query to Claude/Gemini
+    Platform-->>Cache: returns terse answer
+    Note over Cache: stores output in local cache & DB
+    Cache-->>Inbound: terse answer payload
+    Note over Inbound: injects real identifiers locally<br/>(rehydration)
+    Inbound-->>Agent: clean, exact, safe response
 ```
 
-1. **Trigger Hook**: Fired dynamically when your agent encounters a bug after 2 retries, or when explicitly queried by the user.
-2. **Pre-Transit Scrubber**: Interceptor identifies potential secrets, email addresses, and local directories, substituting them with mapping tokens (`[APIKEY_1]`).
-3. **Cost & Cache Check**: Prompt SHA-256 signatures are evaluated. Rolling 5-hour budgets are queried in SQLite. If clean, it dispatches to the strongest model.
-4. **Out-of-Band Rehydration**: The answer is returned to the client-side interceptor, which maps placeholders back to raw identifiers.
-5. **Safe Presentation**: The agent receives the technically exact, terse response securely.
+1. **Trigger hook**: Fired dynamically when your agent encounters a bug after 2 retries, or when explicitly queried by the user.
+2. **Pre-transit scrubber**: Interceptor identifies potential secrets, email addresses, and local directories, substituting them with mapping tokens (`[APIKEY_1]`).
+3. **Cost and cache check**: Prompt SHA-256 signatures are evaluated. Rolling 5-hour budgets are queried in SQLite. If clean, it dispatches to the strongest model.
+4. **Out-of-band rehydration**: The answer is returned to the client-side interceptor, which maps placeholders back to raw identifiers.
+5. **Safe presentation**: The agent receives the technically exact, terse response securely.
 
 ## License
 
