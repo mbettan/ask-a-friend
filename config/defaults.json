@@ -1,0 +1,11 @@
+{
+  "friend_model": "auto",
+  "require_approval": true,
+  "use_cache": true,
+  "max_tokens": 1024,
+  "session_cost_cap_usd": 5.0,
+  "cost_cap_mode": "warn",
+  "max_friend_calls_per_task": 3,
+  "timeout_ms": 30000,
+  "cache_ttl_sec": 3600
+}

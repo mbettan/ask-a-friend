@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+.venv/
+ENV/
+env/
+
+# Node / JavaScript
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
+# OS / IDE local settings
+.DS_Store
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Local testing artifacts / database files / logs / outputs
+*.log
+*.db
+*.sqlite3
+*.eml
+*.html
+*.pdf
+extracted/
+*-attachments/
+
+# Ensure docs folder and its contents are not ignored
+!docs/
+!docs/**
+

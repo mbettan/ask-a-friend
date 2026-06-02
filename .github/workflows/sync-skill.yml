@@ -1,0 +1,34 @@
+name: sync-skill
+on:
+  push:
+    branches: [main]
+    paths:
+      - "skills/ask-a-friend/SKILL.md"
+      - "rules/ask-a-friend-activate.md"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fan out SKILL.md to agent locations
+        run: |
+          SRC=skills/ask-a-friend/SKILL.md
+          RULE=rules/ask-a-friend-activate.md
+          # Cursor needs alwaysApply, Windsurf needs trigger
+          { echo "---"; echo "alwaysApply: true"; echo "---"; cat "$RULE"; } > .cursor/rules/ask-a-friend.mdc
+          { echo "---"; echo "trigger: always_on"; echo "---"; cat "$RULE"; } > .windsurf/rules/ask-a-friend.md
+          # Top-level mirror used by `npx skills`
+          cp "$SRC" SKILL.md
+
+      - name: Rebuild plugin zip
+        run: cd skills/ask-a-friend && zip -r ../../ask-a-friend.skill .
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "sync skill [skip ci]"
+          git push

@@ -1,0 +1,21 @@
+{
+  "name": "ask-a-friend",
+  "version": "1.0.0",
+  "description": "Consult a stronger model on Agent Platform when stuck.",
+  "skills": ["skills/ask-a-friend/SKILL.md"],
+  "mcpServers": {
+    "ask-a-friend": {
+      "command": "node",
+      "args": ["${PLUGIN_DIR}/mcp/dist/ask-friend-server.js"],
+      "env": {
+        "AGENT_PLATFORM_PROJECT_ID": "${AGENT_PLATFORM_PROJECT_ID}",
+        "AGENT_PLATFORM_LOCATION": "${AGENT_PLATFORM_LOCATION}",
+        "VERTEX_PROJECT_ID": "${VERTEX_PROJECT_ID}",
+        "VERTEX_LOCATION": "${VERTEX_LOCATION}"
+      }
+    }
+  },
+  "hooks": {
+    "onSessionStart": "node ${PLUGIN_DIR}/hooks/session-start.js --event SessionStart"
+  }
+}
