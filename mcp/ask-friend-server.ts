@@ -90,7 +90,7 @@ async function callAgentPlatformNode(args: any): Promise<any> {
 
   const project = process.env.AGENT_PLATFORM_PROJECT_ID || process.env.ASK_FRIEND_AGENT_PLATFORM_PROJECT || process.env.VERTEX_PROJECT_ID || process.env.ASK_FRIEND_VERTEX_PROJECT || "your-gcp-project-id";
   const location = process.env.AGENT_PLATFORM_LOCATION || process.env.ASK_FRIEND_AGENT_PLATFORM_LOCATION || process.env.VERTEX_LOCATION || process.env.ASK_FRIEND_VERTEX_LOCATION || "us-central1";
-  const model = args.friend_model === "auto" || !args.friend_model ? "gemini-2.5-pro" : args.friend_model;
+  const model = args.friend_model === "auto" || !args.friend_model ? "gemini-3.5-flash" : args.friend_model;
 
   const BREVITY = `Terse. Technical substance exact. Only fluff die.
 Drop articles, filler, pleasantries, hedging. Fragments OK. Code unchanged.
@@ -110,7 +110,7 @@ Pattern: [thing] [action] [reason]. [next step]. Answer directly. No preamble.`;
       messages: [{ role: "user", content: fullPrompt }]
     };
   } else {
-    const cleanModel = model === "gemini-pro" ? "gemini-2.5-pro" : model;
+    const cleanModel = model === "gemini-pro" ? "gemini-3.5-flash" : model;
     url = `https://${location}-aiplatform.googleapis.com/v1/projects/${project}/locations/${location}/publishers/google/models/${cleanModel}:generateContent`;
     payload = {
       contents: [{ role: "user", parts: [{ text: fullPrompt }] }],
