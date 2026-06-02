@@ -9,9 +9,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/mbettan/phoning-a-friend/stargazers"><img src="https://img.shields.io/github/stars/mbettan/phoning-a-friend?style=flat&color=yellow" alt="Stars"></a>
-  <a href="https://github.com/mbettan/phoning-a-friend/commits/main"><img src="https://img.shields.io/github/last-commit/mbettan/phoning-a-friend?style=flat" alt="Last Commit"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/mbettan/phoning-a-friend?style=flat" alt="License"></a>
+  <a href="https://github.com/mbettan/ask-a-friend/stargazers"><img src="https://img.shields.io/github/stars/mbettan/ask-a-friend?style=flat&color=yellow" alt="Stars"></a>
+  <a href="https://github.com/mbettan/ask-a-friend/commits/main"><img src="https://img.shields.io/github/last-commit/mbettan/ask-a-friend?style=flat" alt="Last Commit"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/mbettan/ask-a-friend?style=flat" alt="License"></a>
 </p>
 
 <p align="center">
@@ -74,10 +74,10 @@ One command. Auto-detects and configures Claude Code, Cursor, Windsurf, Copilot,
 
 ```bash
 # macOS / Linux / WSL
-curl -fsSL https://raw.githubusercontent.com/mbettan/phoning-a-friend/main/hooks/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/mbettan/ask-a-friend/main/hooks/install.sh | bash
 
 # Windows (PowerShell 5.1+)
-irm https://raw.githubusercontent.com/mbettan/phoning-a-friend/main/hooks/install.ps1 | iex
+irm https://raw.githubusercontent.com/mbettan/ask-a-friend/main/hooks/install.ps1 | iex
 ```
 
 *Takes ~30 seconds. Requires Node ≥ 18 and Python 3. Safe to re-run.*
