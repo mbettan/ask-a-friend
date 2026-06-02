@@ -97,7 +97,7 @@ You can configure your project ID using either environment variables or a persis
 Add this to your shell profile (e.g., `~/.zshrc` or `~/.bashrc`):
 ```bash
 export AGENT_PLATFORM_PROJECT_ID="your-gcp-project-id"
-# Optionally: export AGENT_PLATFORM_LOCATION="us-central1"
+# Optionally: export AGENT_PLATFORM_LOCATION="global"
 ```
 
 #### Option B: Configuration File (Recommended for persistent IDE plugins)
@@ -105,7 +105,7 @@ Modify your local configuration file at `~/.config/ask-a-friend/config.json` (cr
 ```json
 {
   "vertex_project": "your-gcp-project-id",
-  "vertex_location": "us-central1",
+  "vertex_location": "global",
   "cost_cap_usd": 5.00,
   "require_approval": true
 }
